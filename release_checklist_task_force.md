@@ -41,25 +41,24 @@ See [here](release_checklist.html) for the checklist for data contributors.
   <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; ( cat *.conllu | ../tools/conllu-stats.pl > stats.xml ) ; git add stats.xml ; git commit -m 'Updated statistics.' ; git push ; cd .. ; echo ; done</code>
 * Merge the `dev` branch into `master` in the released repositories.
   (Note: the script `package_ud_release.sh`, that we will later use to create the release, generates plain text files from the CoNLL-U files. So far, the plain text files appear only in the released package but not in the Github treebank repository. Maybe we want to add these files to the master branch as well? But then we would have to generate them before we merge the branches here. And we must decide whether we want to have the files in the dev branch as well, like we do with `stats.xml`.)
-  The `master` branch should not be touched the next seven months and it should have exactly the contents that was officially
-  released and used in the shared task.<br />
+  The `master` branch should not be touched the next six months and it should have exactly the contents that was officially
+  released.<br />
   <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; git checkout master ; git pull --no-edit ; git merge dev --no-edit ; git push ; git checkout dev ; cd .. ; echo ; done</code>
   * Check for conflicts from the previous step. If people misbehaved and pushed commits to `master`, even after a revert automatic merging may no longer be possible. We must resolve all conflicts manually before going on! The conflicted repositories are still switched to the `master` branch and git will not allow any further operations with them!<br />
     <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; if ( git status | grep conflict ) ; then echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX CONFLICT XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ; sleep 2 ; else echo OK ; fi ; cd .. ; echo ; done</code>
-    * <code>cd UD_...(the-one-with-conflict) ; git status</code> will show what files have a problem. Let's assume that only `README.txt` has a problem. This is how we replace it with the version from the `dev` branch and conclude the merge:<br />
-      <code>git checkout --theirs README.txt ; git add README.txt ; git commit -m 'Merge branch dev' ; git push ; git checkout dev ; cd ..</code>
+    * <code>cd UD_...(the-one-with-conflict) ; git status</code> will show what files have a problem. Let's assume that only `README.md` has a problem. This is how we replace it with the version from the `dev` branch and conclude the merge:<br />
+      <code>git checkout --theirs README.md ; git add README.md ; git commit -m 'Merge branch dev' ; git push ; git checkout dev ; cd ..</code>
   * After resolving the conflicts do not forget to checkout the `dev` branch again! (If there were no conflicts, we are already back in `dev`.)<br />
     <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; git checkout dev ; cd .. ; echo ; done</code>
 * Re-evaluate the treebanks for the star ranking on the website. This is done only in the master branch and the result is stored there.<br />
   <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; git checkout master ; cd .. ; perl -I tools tools/evaluate_treebank.pl $i --verbose &gt;&amp; $i/eval.log ; cd $i ; git add eval.log ; git commit -m 'Updated treebank evaluation.' ; git push ; git checkout dev ; cd .. ; done</code>
-* Tag the current commit in all repositories with the tag of the current release (`git tag r2.2` for UD 2.2).
+* Tag the current commit in all repositories with the tag of the current release (`git tag r2.3` for UD 2.3).
   Push the tag to Github: `git push origin --tags`.
   You may even tag a particular commit retroactively: `git tag -a r2.1 9fceb02`.
   If the repository is updated after you assigned the tag and you need to re-assign the tag to a newer commit,
   this is how you remove the tag from where it is now: `git tag -d r2.1`.
-  And this is how you remove it from Github: `git push origin :refs/tags/r2.1`.
-  WARNING: The following command tags all UD repositories, including those that are not part of the current release.<br />
-  <code>for i in $(cat released_treebanks.txt) docs tools ; do echo $i ; cd $i ; git tag r2.2 ; git push --tags ; cd .. ; echo ; done</code>
+  And this is how you remove it from Github: `git push origin :refs/tags/r2.1`.<br />
+  <code>for i in $(cat released_treebanks.txt) docs tools ; do echo $i ; cd $i ; git tag r2.3 ; git push --tags ; cd .. ; echo ; done</code>
 
 ## Updating automatically generated parts of documentation
 
@@ -82,9 +81,9 @@ See [here](release_checklist.html) for the checklist for data contributors.
 
 * Run the script <tt>tools/package_ud_release.sh</tt>, which must find the release number in the environment,
   and its arguments are names of folders to be released.<br />
-  <code>RELEASE=2.2 tools/package_ud_release.sh $(cat released_treebanks.txt)</code>
+  <code>RELEASE=2.3 tools/package_ud_release.sh $(cat released_treebanks.txt)</code>
 * Make the release packages temporarily available for download somewhere and ask the treebank providers to check them before we archive them in Lindat.
-* Tell Anša Vernerová that she can start importing the data to Kontext (ideally the announcement about the release would include links to PML-TQ, Kontext and SETS).
+* Tell Anša Vernerová that she can start importing the data to Kontext (ideally the announcement about the release would include links to PML-TQ, Kontext and SETS). Tell Milan Straka that he can start training UDPipe models of the new data.
 * Update the list of licenses for Lindat. See the [LICENSE repository](https://github.com/UniversalDependencies/LICENSE).
   Send the new list to Lindat so they add it to their menu (they like to get it as a diff file against the previous license;
   they can be reached at lindat-help@ufal.mff.cuni.cz).
@@ -113,12 +112,14 @@ See [here](release_checklist.html) for the checklist for data contributors.
 
 <small><code style='color:lightgrey'>
 \# copy metadata to biblio ;
+rel="2.3" ;
 path=$(pwd) ;
 cd /net/data ;
-tar xzf $path/release-2.2/ud-treebanks-v2.2.tgz ;
-mv ud-treebanks-v2.2 universal-dependencies-2.2 ;
+tar xzf $path/release-$rel/ud-treebanks-v$rel.tgz ;
+mv ud-treebanks-v$rel universal-dependencies-$rel ;
+\# check that Treex knows all new language codes (two files: resources XML schema and Core/Types.pm)
 cd $HAMLEDT ;
-perl ./populate_ud22.pl ;
+perl ./populate_ud.pl $rel ;
 cd normalize ; make qpmltq ;
 \# follow instructions in ud-to-pmltq manual ($HAMLEDT/pmltq/navod_na_export_ud_do_pmltq.odt) ;
 </code></small>

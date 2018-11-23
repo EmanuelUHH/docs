@@ -93,7 +93,11 @@ on the [release checklist page](/release_checklist.html#validation).
 See [Issue 376](https://github.com/UniversalDependencies/docs/issues/376) for references to software that helps with migration
 of treebanks from [UD v1](http://universaldependencies.org/docsv1/) to v2 guidelines.
 
+
+
 ## Third-party tools
+
+
 
 ### Annotation Tools
 
@@ -179,8 +183,6 @@ WebAnno 3.0.0 does not support the CoNLL-U 2.0 format at this time.
 
 #### LightTag
 
-<img style="width: 50%; float:right" src="https://lighttag.io/assets/img/udep.gif"/>
-
 **LightTag** is a general purpose text annotation tool which supports span annotations, classification as well as phrase-based and dependency-based relations. LightTag allows a drag-and-drop interface allowing annotators to easily drag individual tokens or sub-trees to construct their parse.
 
 [LightTag's Universal Dependency Tool](https://lighttag.io/udep/) allows the user to paste an existing CoNLL-U file, visualize and correct the annotations. LightTag's full featured [text annotation tool](https://lighttag.io) supports managing teams of annotators, is fully hosted and availble free for academic use.
@@ -195,7 +197,7 @@ WebAnno 3.0.0 does not support the CoNLL-U 2.0 format at this time.
 
 #### TrUDucer
 
-(TrUDucer)[http://nats.gitlab.io/truducer/] is a tree rewriting system based on tree transducers.  It transforms dependency trees in a top-down fashion, making sure that each resulting structure will still be a valid tree.  Rules are written in a domain-specific language; for cases where the DSL is not powerfui enough, rules can be augmented by writing special-case predicates in (groovy)[http://groovy-lang.org].
+[TrUDucer](http://nats.gitlab.io/truducer/) is a tree rewriting system based on tree transducers.  It transforms dependency trees in a top-down fashion, making sure that each resulting structure will still be a valid tree.  Rules are written in a domain-specific language; for cases where the DSL is not powerfui enough, rules can be augmented by writing special-case predicates in [groovy](http://groovy-lang.org).
 It contains an interactive transformation viewer to debug rule applications and a search tool to find trees where a specific rule could be applicable.  As of 2018, TrUDucer is under active development at Hamburg University.
 
 An example rule file converting (large parts of) the Hamburg Dependency Treebank to UD is provided with TrUDucer. The Univerity of Zurich provides a [rule file to convert the TIGER treebank to UD using TrUDucer](https://gitlab.cl.uzh.ch/siclemat/tigerdep2ud).
@@ -220,6 +222,7 @@ An example rule file converting (large parts of) the Hamburg Dependency Treebank
 * Implementation: Emacs Lisp
 * License: GPL 3.0
 * Homepage <https://github.com/odanoburu/conllu-mode>
+
 
 #### Atom
 
@@ -248,7 +251,7 @@ Syntax highlighting for CoNLL-U files on Sublime Text.
 
 #### CL-CoNLLU
 
-A Common Lisp library for various CoNLL-U-related operations. We have already functions for reading, writing, making queries, construct visualizations of sentences, compare trees etc. 
+A Common Lisp library for various CoNLL-U-related operations. We have already functions for reading, writing, making queries, construct visualizations of sentences, compare trees etc.
 
 * Category: library
 * Platform: any OS that runs a Common Lisp implementation
@@ -269,7 +272,7 @@ DepEdit is a simple, open source, configurable tool for manipulating dependency 
   * Use external configuration files for different scenarios or define rules programmatically when used as a module
   * No language or schema specific details are hardwired into the system - everything is defined in the configuration file
   * Can be used as a very rudimentary rule-based parser to pre-process data with easy dependencies before manual annotation (e.g. attach all articles to following nouns as `det`)
-  
+
 * Category: library
 * Platform: Windows, Linux, OSX
 * Implementation: Python 2/3
@@ -282,7 +285,7 @@ DepEdit is a simple, open source, configurable tool for manipulating dependency 
 
 DKPro Core is collection of software components for natural language processing (NLP) based on the Apache UIMA framework. DKPro Core can be used to build workflows that automatically process text using a wide range of NLP tools from third parties that are all interoperable (Stanford CoreNLP, Apache OpenNLP, ClearNLP, mate-tools, etc etc.). It also supports a range of different data formats and can be used to convert between the different supported formats.
 
-Starting with version 1.9.0, DKPro Core supports [reading and writing](https://zoidberg.ukp.informatik.tu-darmstadt.de/jenkins/job/DKPro%20Core%20Documentation%20(GitHub)/de.tudarmstadt.ukp.dkpro.core$de.tudarmstadt.ukp.dkpro.core.doc-asl/doclinks/6/#format-ConllU) the CoNLL-U format. 
+Starting with version 1.9.0, DKPro Core supports [reading and writing](https://zoidberg.ukp.informatik.tu-darmstadt.de/jenkins/job/DKPro%20Core%20Documentation%20(GitHub)/de.tudarmstadt.ukp.dkpro.core$de.tudarmstadt.ukp.dkpro.core.doc-asl/doclinks/6/#format-ConllU) the CoNLL-U format.
 
 The latest CoNLL-U 2.0 format is not yet supported.
 
@@ -331,6 +334,7 @@ The latest CoNLL-U 2.0 format is not yet supported.
 * On-line service: <http://lindat.mff.cuni.cz/services/udpipe/>
 * References: Milan Straka, Jan Hajič and Jana Straková 2016. UDPipe: Trainable Pipeline for Processing CoNLL-U Files Performing Tokenization, Morphological Analysis, POS Tagging and Parsing. LREC 2016, Portorož, Slovenia, May 2016.
 
+
 #### UDAPI
 
 * Category: libraries for various UD and CoNLL-U-related operations in several programming languages
@@ -363,3 +367,9 @@ A simple browser-based (JavaScript, i.e. client side) viewer of your CoNLL-U fil
 * Implementation: JavaScript
 * Credit: Milan Straka, Michal Sedlák
 * [Access here](conllu_viewer.html)
+
+
+#### CoNLL-U viewer at rug.nl
+
+* Live site: [http://www.let.rug.nl/kleiweg/conllu/](http://www.let.rug.nl/kleiweg/conllu/)
+* Source code: [Github](https://github.com/rug-compling/conllu-viewer)
