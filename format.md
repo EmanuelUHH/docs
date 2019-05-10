@@ -15,7 +15,7 @@ Quick links:
 [[Extensions](#extensions)]
 
 We use a revised version of [the CoNLL-X format](http://anthology.aclweb.org/W/W06/W06-2920.pdf) called CoNLL-U.
-Annotations are encoded in plain text files (UTF-8, using only the LF character as line break, including an LF character at the end of file) with three types of lines:
+Annotations are encoded in plain text files (UTF-8, [normalized to NFC](http://unicode.org/reports/tr15/), using only the LF character as line break, including an LF character at the end of file) with three types of lines:
 
  1. Word lines containing the annotation of a word/token in 10 fields separated by single tab characters; see below.
  2. Blank lines marking sentence boundaries.
@@ -23,7 +23,7 @@ Annotations are encoded in plain text files (UTF-8, using only the LF character 
 
 Sentences consist of one or more word lines, and word lines contain the following fields:
 
- 1. ID: Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes.
+ 1. ID: Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes (decimal numbers can be lower than 1 but must be greater than 0).
  2. FORM: Word form or punctuation symbol.
  3. LEMMA: Lemma or stem of word form.
  4. UPOS: [Universal part-of-speech tag](u/pos/index.html).
@@ -80,7 +80,7 @@ We extract the raw token sequence by skipping all integer IDs that are included 
     5      mar       mar
 
 To accommodate the use of empty nodes for the analysis of ellipsis in the enhanced dependency representation, we adopt
-a further extension of the indexing scheme from v2. It is possible to insert one or more empty nodes indexed _i_.1, _i_.2, etc. immediately after a word with index _i_ (where _i_ = 0 for sentence-initial empty nodes). Note that the the numbers after the decimal point must form a sequence starting at 1, i.e. it is not allowed to skip _i_.1 and use _i_.2. Here is an example showing the use of an empty node in the analysis of the sentence _Sue likes coffee and Bill tea_:
+a further extension of the indexing scheme from v2. It is possible to insert one or more empty nodes indexed _i_.1, _i_.2, etc. immediately after a word with index _i_ (where _i_ = 0 for sentence-initial empty nodes). Note that the the numbers after the decimal point must form a sequence starting at 1, i.e. it is not allowed to skip _i_.1 and use _i_.2. In the unlikely case that there are ten or more empty nodes between two real tokens, _i_.10 comes after _i_.9, that is, the entire ID is not ordered numerically as a decimal number. Here is an example showing the use of an empty node in the analysis of the sentence _Sue likes coffee and Bill tea_:
 
     1      Sue       Sue
     2      likes     like

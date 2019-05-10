@@ -12,7 +12,7 @@ markdown_ext: md
 
 baseurl: ""
 
-gems:
+plugins:
   - jekyll-redirect-from
 
 liquid:
@@ -116,10 +116,11 @@ collections:
     output: true
   mr:
     output: true
-###!!! DZ: I cannot make Jekyll process a collection called just "no".
-  no-overview:
+  mt:
     output: true
   nl:
+    output: true
+  "no":
     output: true
   pcm:
     output: true
@@ -130,6 +131,8 @@ collections:
   ro:
     output: true
   ru:
+    output: true
+  sa:
     output: true
   sk:
     output: true
@@ -184,6 +187,44 @@ collections:
   bho:
     output: true
   qhe:
+    output: true
+  lt:
+    output: true
+  lzh:
+    output: true
+  aii:
+    output: true
+  krl:
+    output: true
+  olo:
+    output: true
+  orv:
+    output: true
+  mk:
+    output: true
+  gun:
+    output: true
+  am:
+    output: true
+  bxr:
+    output: true
+  hr:
+    output: true
+  hi:
+    output: true
+  id:
+    output: true
+  sme:
+    output: true
+  sr:
+    output: true
+  te:
+    output: true
+  th:
+    output: true
+  ur:
+    output: true
+  ug:
     output: true
 # End of language collections (do not remove this comment, addlanguage.sh looks for it)
 

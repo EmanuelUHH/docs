@@ -2,23 +2,29 @@
 layout: relation
 title: 'compound'
 shortdef: 'compound'
+udver: '2'
 ---
 
-`compound` is one of the relations in UD for compounding.
-In Turkish it is used for bare noun compounds, compound verbal forms and numbers.
+The ``compound`` relation is one of three relations
+for multi-word expressions (MWEs) (the other two being [fixed]() and [flat]()).
+
+In Turkish ``compound`` relation is used mainly noun-verb compounds, and numbers.
+For light-verb constructions we use the subtype [compoun:lvc](compound-lvc),
+and for reduplicated compounds we use [compound:redup](compound-redup).
 
 ~~~ sdparse
-Anneannem bana bir çift yün çorap örmüş . \n My grandmother knitted pair of woolen socks for me .
-compound(çorap, yün)
+Çocuğu yoldan çıkarmış .
+compound(çıkarmış, yoldan)
 ~~~
 
-~~~ sdparse
-Yagmurlu havalardan nefret ediyor . \n He\/she hates rainy weather
-compound(nefret, ediyor)
-~~~
+``compound`` is also used for numbers, where head is the right-most number.
 
 ~~~ sdparse
-Onun fiyatı iki yüz elli lira . \n Price of it is two hundred and fifty liras .
-compound(iki, yüz)
-conj:num(yüz, elli)
+iki yüz bin lira \n two hundred thousand liras
+compound(bin, iki)
+compound(bin, yüz)
+nummod(lira, bin)
 ~~~
+
+For non-lexicalized (non-MWE) nominal modification,
+e.g., _tahta kapı_ "wood(en) door", [nmod]() relation is used.

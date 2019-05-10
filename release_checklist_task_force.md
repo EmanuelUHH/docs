@@ -20,10 +20,8 @@ See [here](release_checklist.html) for the checklist for data contributors.
   back; if this is the case, you will see lists of modified files in the output and you
   will have to resolve it). Also make sure that you are working with the `dev` branch:<br />
   <code>for i in UD_* ; do echo $i ; cd $i ; git checkout dev ; git pull --no-edit ; cd .. ; echo ; done</code>
-* Run `tools/check_files.pl |& tee release-2.2-report.txt | less`.
-  (Since the partial shared task releases, the source code is modified to only look at
-  pre-selected UD folders. Check the code to make sure it visits all UD_* repositories.
-  Also check other parameters that are currently hard-coded, such as the release number.)
+* Run `tools/check_files.pl |& tee release-2.4-report.txt | less`.
+  (Check the code for parameters that are currently hard-coded, such as the release number.)
   The script will visit all repositories and report any missing files, unexpected or unexpectedly named files.
   It will download the [online validation report](http://quest.ms.mff.cuni.cz/cgi-bin/zeman/unidep/validation-report.pl)
   and check whether the treebanks are valid (prerequisite: all UD repositories are registered
@@ -38,7 +36,7 @@ See [here](release_checklist.html) for the checklist for data contributors.
 * Make sure that there are not significant overlaps between training and dev/test files of treebanks of one language.<br />
   <code>check_overlaps.pl $(cat released_treebanks.txt) |& tee overlap.log</code>
 * Update statistics in the `stats.xml` file in each repository:<br />
-  <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; ( cat *.conllu | ../tools/conllu-stats.pl > stats.xml ) ; git add stats.xml ; git commit -m 'Updated statistics.' ; git push ; cd .. ; echo ; done</code>
+  <code>for i in $(cat released_treebanks.txt) ; do echo $i ; cd $i ; ( ../tools/conllu-stats.pl *.conllu > stats.xml ) ; git add stats.xml ; git commit -m 'Updated statistics.' ; git push ; cd .. ; echo ; done</code>
 * Merge the `dev` branch into `master` in the released repositories.
   (Note: the script `package_ud_release.sh`, that we will later use to create the release, generates plain text files from the CoNLL-U files. So far, the plain text files appear only in the released package but not in the Github treebank repository. Maybe we want to add these files to the master branch as well? But then we would have to generate them before we merge the branches here. And we must decide whether we want to have the files in the dev branch as well, like we do with `stats.xml`.)
   The `master` branch should not be touched the next six months and it should have exactly the contents that was officially
@@ -76,6 +74,14 @@ See [here](release_checklist.html) for the checklist for data contributors.
   <code>perl tools/survey_features.pl --tbklist released_treebanks.txt > docs/ext-feat-index.md<br />
   perl tools/survey_deprel_subtypes.pl --tbklist released_treebanks.txt<br />
   cd docs ; git pull --no-edit ; git status ; git commit -a -m 'Updated list of features and relations.' ; git push</code>
+* Run the script `makedata.sh` in the docs repository. It will regenerate the YAML files in the folder `_data`; this is needed
+  for cross-lingual links between documentation pages devoted to individual UPOS tags, features and relations.<br />
+  <code>cd docs ; ./makedata.sh ; git commit -a -m 'Updated crosslingual links.' ; git push</code><br />
+  Note that the script updates the data files that are used in many MarkDown pages but it does not update the MarkDown pages directly.
+  Jekyll thus will not notice that almost all documentation must be re-generated; it will update nothing, until a change happens
+  directly in a MarkDown file, and then it will re-generate only the HTML page based on this MarkDown file.
+  We probably need to ask Filip or Sampo to re-run Jekyll manually? A possible hack would be to insert a blank line at the end of every
+  affected MarkDown file but it is an ugly approach.
 
 ## Releasing the data
 

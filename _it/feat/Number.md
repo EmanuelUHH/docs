@@ -2,11 +2,12 @@
 layout: feature
 title: 'Number'
 shortdef: 'number'
+udver: '2'
 ---
 
 `Number` is an inflectional feature of [nouns](u-pos/NOUN),
 [pronouns](u-pos/PRON),[adjectives](u-pos/ADJ), [determiners](u-pos/DET) and
-[verbs](u-pos/VERB)). 
+[verbs](u-pos/VERB). 
 
 ### `Sing`: singular number
 

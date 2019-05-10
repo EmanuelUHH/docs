@@ -28,6 +28,7 @@ If you would like to have your tool added to this page, please write the
     * [Arborator](#arborator)
     * [LightTag](#lighttag)
     * [TrUDucer](#truducer)
+    * [ConlluEditor](#conllueditor)
   * Editor modes
     * [Emacs](#emacs)
     * [Atom](#atom)
@@ -44,6 +45,7 @@ If you would like to have your tool added to this page, please write the
     * [Deptreeviz](#deptreeviz)
     * [CoNLL-U viewer](#conll-u-viewer)
     * [UDAPI](#udapi)
+    * [TüNDRA](#tündra)
 
 
 
@@ -210,6 +212,25 @@ An example rule file converting (large parts of) the Hamburg Dependency Treebank
 * References:  Hennig, Felix and Köhn, Arne (2017), Dependency Tree Transformation with Tree Transducers. In: Proceedings of the NoDaLiDa 2017 Workshop on Universal Dependencies (UDW 2017). Gothenburg, 58–66.
 * Contact: arne@chark.eu
 
+#### ConlluEditor
+
+<img style="float:right" src="http://universaldependencies.org/img/conllueditor_tree.png"/>
+[ConlluEditor](https://github.com/Orange-OpenSource/conllueditor) is a tool which facilitates the editing of syntactic relations and morphological features of files in CoNLL-U format. It uses a Java-based server and a HTML/CSS/Javascript based front-end. The editor loads the CoNLL-U file and saves every change to disk (and performs a git commit if the file is under git version control).
+
+The editor provides the following functionalities:
+
+* editing words (forms, lemmas, upos, xpos, features, enhanced dependencies)
+* editing dependency relations
+* join/split words (to correct tokenization errors)
+* join/split sentences (to correct tokenization errors)
+* undo/redo (partially)
+* git support
+* Category: manual annotation tool
+* Platform: Any
+* Implementation: Java, JavaScript
+* License: BSD-3-Clause (open source)
+* Homepage: <https://github.com/Orange-OpenSource/conllueditor>
+* Contact: johannes.heinecke@orange.com
 
 ### Editor modes
 
@@ -373,3 +394,13 @@ A simple browser-based (JavaScript, i.e. client side) viewer of your CoNLL-U fil
 
 * Live site: [http://www.let.rug.nl/kleiweg/conllu/](http://www.let.rug.nl/kleiweg/conllu/)
 * Source code: [Github](https://github.com/rug-compling/conllu-viewer)
+
+#### TüNDRA 
+
+TüNDRA (Tübingen aNnotated Data Retrieval Application) is a web application for searching in treebanks using a lightweight query language inspired by the widely used [TIGERSearch application](http://www.ims.uni-stuttgart.de/forschung/ressourcen/werkzeuge/tigersearch.html). It offers corpus linguists an interface for using corpora with complex annotation and syntactic links. Most of the treebanks available in TüNDRA are free and publicly available. To access all the treebanks a user has to have an account at a European institution of higher education (i.e. be a student or an employee). Any user may upload a CoNLL-U or a TCF file to browse/search it with the tool. A visualization is interactive (scaling, zooming, panning) and can be saved in multiple formats (e.g. to be later used for a publication). TüNDRA is a part of [CLARIN-D project](http://de.clarin.eu/) and is funded by the German Federal Ministry for Education and Research (BMBF).
+
+* Category: tree viewer and search engine
+* Platform: any (web application)
+* Implementation: JavaScript, React (frontend), Java (backend)
+* Credit: Department of General and Computational Linguistics at the University of Tübingen
+* [Access here](https://weblicht.sfs.uni-tuebingen.de/Tundra/)

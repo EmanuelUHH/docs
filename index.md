@@ -21,6 +21,7 @@ an open community effort with over 200 contributors producing more than 100 tree
   * [PML Tree Query](http://lindat.mff.cuni.cz/services/pmltq/) maintained by the Charles University in Prague
   * [Kontext](http://lindat.mff.cuni.cz/services/kontext/corpora/corplist) maintained by the Charles University in Prague
   * [Grew-match](http://match.grew.fr) maintained by Inria in Nancy
+  * [INESS](http://clarino.uib.no/iness) maintained by the University of Bergen
 * [Download UD treebanks](#download)
 
 If you want to receive news about Universal Dependencies, you can subscribe to the
@@ -51,6 +52,7 @@ If you want to discuss individual annotation questions, use the
 
 The data is released through LINDAT/CLARIN.
 
+* The next release (v2.4) is scheduled for May 15, 2019 (data freeze on May 1).
 * Version 2.3 treebanks are available at <a href="http://hdl.handle.net/11234/1-2895">http://hdl.handle.net/11234/1-2895</a>. 129 treebanks, 76 languages, released November 15, 2018.
 * Version 2.2 treebanks are archived at http://hdl.handle.net/11234/1-2837. 122 treebanks, 71 languages, released July 1, 2018.
 * Version 2.1 treebanks are archived at http://hdl.handle.net/11234/1-2515. 102 treebanks, 60 languages, released November 15, 2017.
@@ -61,6 +63,5 @@ The data is released through LINDAT/CLARIN.
 * Version 1.2 treebanks are archived at http://hdl.handle.net/11234/1-1548. 37 treebanks, 33 languages, released November 15, 2015.
 * Version 1.1 treebanks are archived at http://hdl.handle.net/11234/LRT-1478. 19 treebanks, 18 languages, released May 15, 2015.
 * Version 1.0 treebanks are archived at http://hdl.handle.net/11234/1-1464. 10 treebanks, 10 languages, released January 15, 2015.
-* In general, we intend to have regular treebank releases every six months. The v2.0 and v2.2 releases are brought forward because of their usage in the [CoNLL 2017 and 2018 Multilingual Parsing Shared Tasks](http://universaldependencies.org/conll17/).
-* The next release (v2.3) is scheduled for November 15, 2018.
+* In general, we intend to have regular treebank releases every six months. The v2.0 and v2.2 releases were brought forward because of their usage in the [CoNLL 2017 and 2018 Multilingual Parsing Shared Tasks](http://universaldependencies.org/conll17/).
 

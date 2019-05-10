@@ -27,9 +27,9 @@ advmod(often, less)
 
 ~~~ sdparse
 Ուր/ADV[PronType=Int] ՞/PUNCT ես/AUX ուզում/VERB գնալ/VERB արձակուրդներին/NOUN ։/PUNCT \n Where do-you want to-go during-the-holidays ?
-advmod(գնալ, Ուր)
+advmod(ուզում, Ուր)
 obl(գնալ, արձակուրդներին)
-advmod(to-go, Where)
+advmod(want, Where)
 obl(to-go, during-the-holidays)
 xcomp(ուզում, գնալ)
 xcomp(want, to-go)
@@ -39,20 +39,13 @@ xcomp(want, to-go)
 Մոտ/ADV հարյուր/NUM մարդ/NOUN եկավ/VERB խնջույքի/NOUN ։ \n About 100 people came to-the-party .
 advmod(հարյուր, Մոտ)
 advmod(100, About)
-~~~
-
-Note, that we treat a closed set of postpositions (traditionally known as “improper adpositions”) as localizers (see [ADP]() for a list of localizers.) The head of the localizer is the noun or the main verb of the clause preceding it. When it follows a noun, it receives the [case:loc]() relation label. Although a few localizers have further grammaticalized into adverbials denoting spatial concepts, localizers with the adverbial function are still tagged as `ADP`, but are labeled with additional features and with the dependency relation `advmod`.
-
-~~~ sdparse
-Մոտովս/ADP[AdpType=Post|Case=Ins|Number[psor]=Sing|Person[psor]=1] անցան/VERB[Aspect=Perf|Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Subcat=Intr|Tense=Past|VerbForm=Fin|Voice=Mid] երկու/NUM[NumForm=Word|NumType=Card] սիլուետներ/NOUN[Animacy=Inan|Case=Nom|Definite=Ind|Number=Plur] ։/PUNCT \n Two silhouettes passed by-me .
-nsubj(անցան, սիլուետներ)
-advmod(անցան, Մոտովս)
-nummod(սիլուետներ, երկու)
-punct(անցան, ։)
-nsubj(passed, silhouettes)
-advmod(passed, by-me)
-nummod(silhouettes, Two)
-punct(passed, .)
+nummod(մարդ, հարյուր)
+nummod(people, 100)
+nsubj(եկավ, մարդ)
+nsubj(came, people)
+obl(եկավ, խնջույքի)
+obl(came, to-the-party)
 ~~~
 
 We use a special label, [advmod:emph]() for adverbial modifiers that are used for emphasis.
+

@@ -2,13 +2,14 @@
 layout: feature
 title: 'VerbForm'
 shortdef: 'form of verb or deverbative'
+udver: '2'
 ---
 
 ### `Fin`: finite verb
 
 #### Examples
 
-* _loro <b>hanno</b> "they have"
+* _loro <b>hanno</b>_ "they have"
 
 ### `Inf`: infinitive
 
@@ -26,7 +27,7 @@ Not used.
 #### Examples
 
 * _potrebbe essersi <b>preparato</b>_ "he could have been prepared";
-* _è <b>arrivato</b< tardi_ "he arrived late"
+* _è <b>arrivato</b> tardi_ "he arrived late"
 * _<b>appartenenti</b> ad organizzazioni terroristiche_ "members of terroristic organizations"
 
 
@@ -38,5 +39,5 @@ Not used.
 
 #### Examples
 
-* _Sto <b>sognando</b> you_ "I am dreaming"
-* _Arrivando tardi si perde il treno_ "Arriving late you miss the train"
+* _Sto <b>sognando</b>_ "I am dreaming"
+* _<b>Arrivando</b> tardi si perde il treno_ "Arriving late you miss the train"

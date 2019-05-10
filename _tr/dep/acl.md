@@ -2,6 +2,7 @@
 layout: relation
 title: 'acl'
 shortdef: 'clausal modifier of noun'
+udver: '2'
 ---
 
 `acl` stands for finite and non-finite clauses that modify a nominal. 
@@ -10,7 +11,8 @@ and the dependent is the head of the clause that modifies the noun.
 
 Like non-clausal adjectives, most adjectival clauses in Turkish precede the noun they modify.
 The only exception is the adjectival clauses formed by _ki_
-that is similar to English relative pronouns "which" or "who" (not to be confused by suffix _-ki_).
+that is similar to English relative pronouns "which" or "who"
+(not to be confused by suffix _-ki_).
 
 The primary means of subordination, including forming adjectival clauses,
 is through the subordinating suffixes attached to the head of the subordinate clause.

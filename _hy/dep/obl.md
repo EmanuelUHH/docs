@@ -55,6 +55,16 @@ case(աշխատանքի, մեջ)
 det(աշխատանքի, այդ)
 ~~~
 
+* Dative noun phrases with benefactive or possessive role (i.e. if the verb does not subcategorize for a single dative object and if it is not a verb of giving (or similar), where the dative could be interpreted as the recipient:
+
+~~~ sdparse
+Նրան/PROPN[Case=Dat] սուրճ/NOUN[Case=Nom] եփեց/VERB ։ \n He-made (for) him coffee .
+obl(եփեց, Նրան)
+obl(He-made, him)
+obj(եփեց, սուրճ)
+obj(He-made, coffee)
+~~~
+
 * `obl` is also used for temporal and locational nominal modifiers as bare nominals or something syntactically a noun phrase in a sentence:
 
 ~~~ sdparse
@@ -75,6 +85,20 @@ nmod:poss(ժամանակ, շրջագայության)
 det:poss(շրջագայության, իր)
 acl(շրջագայության, կատարած)
 obl(կատարած, Ղրիմում)
+~~~
+
+Note, that we treat a closed set of postpositions (traditionally known as “improper adpositions”) as localizers (see [ADP]() for a list of localizers.) The head of the localizer is the noun or the main verb of the clause preceding it. When it follows a noun, it receives the [case:loc]() relation label. Although a few localizers have further grammaticalized into adverbials denoting spatial concepts, localizers with the adverbial function are still tagged as `ADP`, but are labeled with additional features and with the dependency relation `obl`.
+
+~~~ sdparse
+Մոտովս/ADP[AdpType=Post|Case=Ins|Number[psor]=Sing|Person[psor]=1] անցան/VERB[Aspect=Perf|Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Subcat=Intr|Tense=Past|VerbForm=Fin|Voice=Mid] երկու/NUM[NumForm=Word|NumType=Card] սիլուետներ/NOUN[Animacy=Inan|Case=Nom|Definite=Ind|Number=Plur] ։/PUNCT \n Two silhouettes passed by-me .
+nsubj(անցան, սիլուետներ)
+obl(անցան, Մոտովս)
+nummod(սիլուետներ, երկու)
+punct(անցան, ։)
+nsubj(passed, silhouettes)
+obl(passed, by-me)
+nummod(silhouettes, Two)
+punct(passed, .)
 ~~~
 
 We use [obl:agent]() for the agent of a passive verbs. Note, that the `obl` relation is used for the oblique arguments instead of [obj]() (i.e., prepositional objects, in Armenian grammar traditionally called _adpositional indirect objects_.) 
